@@ -3,8 +3,6 @@
 -  name: rapidoid challenge sndr
    hosts: appserver
    remote_user: ubuntu
-   #become_method: sudo
-   #become_user: root
 
    vars:
       rapidoid_path: /home/ubuntu/rapidoid-challenge
@@ -18,9 +16,6 @@
                       3530623164306638390a656231393937383563303165383261653231643966306464663733363466
                       61366232326434383533366538373630383735373636663331353865353039353332656437653964
                       3564633065363637393530623863363565633435396266646235
-
-   #   http_port: 8080
-   #   max_clients: 5
 
    roles:
       - common

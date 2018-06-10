@@ -26,9 +26,3 @@
 -  name: create IP addresses file
    shell: echo "{{ appserver_ips }}" >/exports/sndr/IP_ADDRESSES.txt
 
-
-#-  name: blah
-#   shell: echo "{{ aws_pub_key }}" >/home/ubuntu/test
-
-#-  name: launch rapidoid-challenge
-#   shell: cd "{{ rapidoid_path }}"; nohup mvn compile exec:java  &
