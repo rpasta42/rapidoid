@@ -1,0 +1,7 @@
+---
+-  name: restart rapidoid service
+   become: yes
+   become_user: root
+   service: name=rapidoid state=restarted enabled=yes
+   #shell: cd "{{ rapidoid_path }}"; nohup mvn compile exec:java &
+

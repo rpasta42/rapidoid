@@ -1,0 +1,34 @@
+---
+
+-  name: clone rapidoid-challenge
+   git:
+      repo: https://github.com/sndr-oss/rapidoid-challenge.git
+      dest: "{{ rapidoid_path }}"
+   notify: launch rapidoid challenge
+
+
+-  name: Copy rapidoid upstart config
+   become: yes
+   become_user: root
+   template: src=rapidoid.conf dest=/etc/init/rapidoid.conf
+   notify: restart rapidoid
+
+-  name: Launch rapidoid
+   become: yes
+   become_user: root
+   service: name=rapidoid state=restarted enabled=yes
+
+-  name: attach volume
+   become: yes
+   become_user: root
+   shell: mkdir -p /exports/sndr && mkfs.ext4 /dev/xvdf && mount /dev/xvdf /exports/sndr && chown ubuntu:ubuntu /exports/sndr
+
+-  name: create IP addresses file
+   shell: echo "{{ appserver_ips }}" >/exports/sndr/IP_ADDRESSES.txt
+
+
+#-  name: blah
+#   shell: echo "{{ aws_pub_key }}" >/home/ubuntu/test
+
+#-  name: launch rapidoid-challenge
+#   shell: cd "{{ rapidoid_path }}"; nohup mvn compile exec:java  &

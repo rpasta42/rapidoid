@@ -1,0 +1,32 @@
+---
+
+-  name: Add ppa for java
+   become: yes
+   become_user: root
+   apt_repository:
+      repo: ppa:webupd8team/java
+
+-  name: accept oracle license
+   become: yes
+   become_user: root
+   debconf:
+      name: "oracle-java8-installer"
+      question: "shared/accepted-oracle-license-v1-1"
+      value: "true"
+      vtype: "select"
+
+-  name: Install java
+   become: yes
+   become_user: root
+   apt:
+      name: oracle-java8-installer
+      update_cache: yes
+
+-  name: Install maven
+   become: yes
+   become_user: root
+   apt:
+      name: maven
+      update_cache: yes
+
+

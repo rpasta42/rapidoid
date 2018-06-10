@@ -1,0 +1,30 @@
+---
+
+-  name: rapidoid challenge sndr
+   hosts: appserver
+   remote_user: ubuntu
+   #become_method: sudo
+   #become_user: root
+
+   vars:
+      rapidoid_path: /home/ubuntu/rapidoid-challenge
+      appserver_ips: "{{ groups['appserver'] | join(',') }}"
+      AWS_ACCESS_KEY_ID: AKIAID5LJFIGDM7VLJGQ
+      AWS_SECRET_ACCESS_KEY: !vault |
+                      $ANSIBLE_VAULT;1.1;AES256
+                      32393136633165633839396634343531663761616635663139623835313666303164316162653264
+                      6130343232623763613732656631366465663036373534630a333935383864656131343561646161
+                      63653538653437373339383633663666343337383630663937616361303763373834346231653130
+                      3530623164306638390a656231393937383563303165383261653231643966306464663733363466
+                      61366232326434383533366538373630383735373636663331353865353039353332656437653964
+                      3564633065363637393530623863363565633435396266646235
+
+   #   http_port: 8080
+   #   max_clients: 5
+
+   roles:
+      - common
+      - java
+      - rapidoid-challenge
+
+

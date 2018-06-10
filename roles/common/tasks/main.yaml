@@ -1,0 +1,14 @@
+---
+
+-  name: Update ubuntu
+   become: yes
+   become_user: root
+
+   apt: update_cache=yes upgrade=yes
+
+-  name: install git
+   become: yes
+   become_user: root
+   apt:
+      name: git
+      update_cache: no
